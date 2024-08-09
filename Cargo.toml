@@ -21,3 +21,4 @@ anyhow = "1.0.71"
 
 [[bin]]
 name = "flowtigs"
+path = "src/main.rs"

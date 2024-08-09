@@ -4,11 +4,11 @@ An algorithm for computing [flowtigs](https://www.biorxiv.org/content/10.1101/20
 
 The steps to compute flowtigs from reads are the following:
 
--  Install Rust
--  Run ggcat or bcalm on the reads
--  Run flowtigs on the output of ggcat or bcalm
+1.  [Install Rust](#1-installation-of-rust)
+2.  [Run ggcat or bcalm on the reads](#2-running-ggcat)
+3.  [Run flowtigs on the output of ggcat or bcalm](#3-running-flowtigs)
 
-## Installation of Rust
+## 1. Installation of Rust
 
 First, install [Rust](https://rustup.rs/) if not yet installed.
 
@@ -24,9 +24,9 @@ $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 Follow this [link](https://www.rust-lang.org/tools/install) and follow the instructions to install rustup.
 
-## Running ggcat
+## 2. Running ggcat
 
-ggcat takes reads as input and outputs a file that can be used by flowtigs, see [example](https://github.com/elieling/flowtigs-data) of the input and output format of ggcat. Download ggcat with the following commands
+[ggcat](https://github.com/algbio/ggcat) takes reads as input and outputs a file that can be used by flowtigs, see [example](https://github.com/elieling/flowtigs-data) of the input and output format of ggcat. Download ggcat with the following commands
 ```
 git clone https://github.com/algbio/ggcat --recursive
 cd ggcat/
@@ -47,14 +47,21 @@ where
 - `<input file>` represents the path to the input file which contains the reads
 - `<output file>` represents the path to the desired output file, which will be the input file for flowtigs
 
-## Running flowtigs
+If you get the error message "Command 'ggcat' not found", instead run
 
-The input of flowtigs should be a file in the same format as the output of [bcalm](https://github.com/GATB/bcalm) or [ggcat](https://github.com/algbio/ggcat). An example can be seen [here]([https://github.com/elieling/flowtigs-data](https://github.com/elieling/flowtigs-data/tree/main/output_of_ggcat).
+```
+~/.cargo/bin/ggcat build -k <k> -j <threads> -e -s <minimum multiplicity> '<input file name>' -o '<output file name>'
+```
+
+## 3. Running flowtigs
+
+The input of flowtigs should be a file in the same format as the output of [bcalm](https://github.com/GATB/bcalm) or [ggcat](https://github.com/algbio/ggcat). An example can be seen [here](https://github.com/elieling/flowtigs-data/tree/main/output_of_ggcat).
 
 Clone this project with the following commands
 ```
 git clone https://github.com/elieling/flowtigs.git
 cd flowtigs
+cargo build --release
 ```
 Then, run flowtigs with the folowing code in the project directory
 ```
@@ -65,6 +72,12 @@ where
 - `<k>` represents the desired k-value
 - `<threshold>` represents the desired threshold for filtering. To run flowtigs without filtering, use threshold 0
 - `<output file>` represents the path to the desired output file
+
+If you get the error message "Command 'flowtigs' not found", instead run
+
+```
+~/.cargo/bin/flowtigs --input "<input file>" -k <k> -t <threshold> --output "<output file>"
+```
 
 
 ### Output
