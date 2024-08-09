@@ -59,7 +59,7 @@ The input of flowtigs should be a file in the same format as the output of [bcal
 
 Clone this project with the following commands
 ```
-git clone https://github.com/elieling/flowtigs.git
+git clone https://github.com/algobio/flowtigs.git
 cd flowtigs
 cargo build --release
 ```
