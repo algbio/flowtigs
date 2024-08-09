@@ -47,7 +47,7 @@ where
 - `<input file>` represents the path to the input file which contains the reads
 - `<output file>` represents the path to the desired output file, which will be the input file for flowtigs
 
-If you get the error message "Command 'ggcat' not found", instead run
+If you get the error message `Command 'ggcat' not found`, either add `$HOME/.cargo/bin` to your `$PATH` variable, or run ggcat with the following command intead.
 
 ```
 ~/.cargo/bin/ggcat build -k <k> -j <threads> -e -s <minimum multiplicity> '<input file name>' -o '<output file name>'
@@ -59,9 +59,9 @@ The input of flowtigs should be a file in the same format as the output of [bcal
 
 Clone this project with the following commands
 ```
-git clone https://github.com/algobio/flowtigs.git
+git clone https://github.com/elieling/flowtigs.git
 cd flowtigs
-cargo build --release
+cargo install --path . --locked
 ```
 Then, run flowtigs with the folowing code in the project directory
 ```
@@ -73,7 +73,7 @@ where
 - `<threshold>` represents the desired threshold for filtering. To run flowtigs without filtering, use threshold 0
 - `<output file>` represents the path to the desired output file
 
-If you get the error message "Command 'flowtigs' not found", instead run
+If you get the error message `Command 'flowtigs' not found`, either add `$HOME/.cargo/bin` to your `$PATH` variable, or run flowtigs with the following command intead.
 
 ```
 ~/.cargo/bin/flowtigs --input "<input file>" -k <k> -t <threshold> --output "<output file>"
